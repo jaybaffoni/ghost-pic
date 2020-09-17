@@ -3,10 +3,12 @@ import Camera from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
 import "./App.css";
 import Navbar from "./Components/Navbar";
-import Capture from "./Components/Capture";
-
-import ImagePreview from "./ImagePreview"; // source code : ./src/demo/AppWithImagePreview/ImagePreview
 import Webcam from "react-webcam";
+
+import Amplify from "aws-amplify";
+import config from "./aws-exports";
+import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+Amplify.configure(config);
 
 function App(props) {
   const webcamRef = React.useRef(null);
@@ -30,8 +32,9 @@ function App(props) {
         <button onClick={capture}>Capture photo</button>
         {imgSrc && <img src={imgSrc} />}
       </>
+      <AmplifySignOut />
     </>
   );
 }
 
-export default App;
+export default withAuthenticator(App);

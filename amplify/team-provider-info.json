@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ghostpic-dev-102017-authRole",
+      "UnauthRoleArn": "arn:aws:iam::360395658733:role/amplify-ghostpic-dev-102017-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::360395658733:role/amplify-ghostpic-dev-102017-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-ghostpic-dev-102017-deployment",
+      "UnauthRoleName": "amplify-ghostpic-dev-102017-unauthRole",
+      "StackName": "amplify-ghostpic-dev-102017",
+      "StackId": "arn:aws:cloudformation:us-east-1:360395658733:stack/amplify-ghostpic-dev-102017/0c3afa60-f8f1-11ea-92fb-12409d333fbd",
+      "AmplifyAppId": "dmthche7235g6"
+    },
+    "categories": {
+      "auth": {
+        "ghostpicd32013f8": {}
+      }
+    }
+  }
+}
