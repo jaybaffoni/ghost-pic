@@ -1,22 +1,15 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import "react-html5-camera-photo/build/css/index.css";
-import "./App.css";
-import Navbar from "./Components/Navbar";
-import WebCapture from "./Components/WebCapture";
+import Webcam from "react-webcam";
 
 import Amplify from "aws-amplify";
-import config from "./aws-exports";
+import config from "../aws-exports";
 import { API, Storage } from "aws-amplify";
-import {
-  AmplifyAuthenticator,
-  AmplifySignOut,
-  AmplifySignIn,
-} from "@aws-amplify/ui-react";
-import { listPhotos } from "./graphql/queries";
+import { listPhotos } from "../graphql/queries";
 import {
   createPhoto as createPhotoMutation,
   deletePhoto as deletePhotoMutation,
-} from "./graphql/mutations";
+} from "../graphql/mutations";
 
 const initialFormState = { type: "image", viewmode: "multiple" };
 Amplify.configure(config);
@@ -112,21 +105,28 @@ function App(props) {
   }
 
   return (
-    <AmplifyAuthenticator style={{ width: "100%", textAlign: "center" }}>
-      <AmplifySignIn headerText="Please Sign In" slot="sign-in" />
-      <div className="parent">
-        {/* <Navbar />
-        <WebCapture />
-        <AmplifySignOut /> */}
-        <header>
-          <h1>Header.com</h1>
-        </header>
-        <main>
-          <WebCapture />
-        </main>
-        <footer>Footer Content — Header.com 2020</footer>
-      </div>
-    </AmplifyAuthenticator>
+    <div style={{ height: "100%" }}>
+      {imgSrc ? (
+        <>
+          <img src={imgSrc} />
+          <button onClick={send}>Send photo</button>
+        </>
+      ) : (
+        <div style={{ height: "100%" }}>
+          <Webcam
+            audio={false}
+            ref={webcamRef}
+            screenshotFormat="image/jpeg"
+            mirrored
+            // width={100}
+            // height={100}
+            height={"100%"}
+            // width={"100%"}
+          />
+          <button onClick={capture}>Capture photo</button>
+        </div>
+      )}
+    </div>
   );
 }
 

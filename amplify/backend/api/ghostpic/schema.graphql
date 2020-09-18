@@ -1,0 +1,8 @@
+type Photo @model {
+  id: ID!
+  type: String!
+  viewmode: String!
+  user: String!
+  date: String!
+  url: String
+}

@@ -62,3 +62,11 @@
 img {
   display: inline-block;
 }
+
+.parent {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: aqua;
+}
